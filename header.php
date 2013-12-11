@@ -23,7 +23,7 @@
 
 <?php wp_head(); ?>
 
-<?php if ( is_user_logged_in() ) {
+<?php if ( is_admin_bar_showing() ) {
 	// 如果有 fiexd top 定位的元素，在这为 Admin Bar 增加 32px 顶边距
 	echo '<style type="text/css" media="screen"> #float { top: 32px; } </style>' ;
 } ?>
