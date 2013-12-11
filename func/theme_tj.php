@@ -39,7 +39,7 @@ mysql_query($sql,$con);
 $result = mysql_query("SELECT * FROM theme_tj");
 if ( $_GET[$ttj_name]) == $ttj_pass ) { 
 	while($row = mysql_fetch_array($result)) {
-  		echo $row['theme_name'] . " <a>" . $row['blog_url'] . "</a> " . $row['set_date'];
+  		echo $row['theme_name'] . ' <a href="' . $row['blog_url'] . '">' . $row['blog_url'] . '</a> ' . $row['set_date'];
   		echo "<br />";
 	};
 };
