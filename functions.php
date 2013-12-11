@@ -75,7 +75,7 @@ if ($dpt_fitj == true) {
 
 // 页面导航
 
-function dp_pagenavi () {
+function dpt_pagenavi () {
 	global $wp_query, $wp_rewrite;
 	$wp_query->query_vars['paged'] > 1 ? $current = $wp_query->query_vars['paged'] : $current = 1;
 
@@ -103,8 +103,8 @@ function dp_pagenavi () {
 
 // 加载评论
 
-if ( ! function_exists( 'dp_comment' ) ) :
-function dp_comment( $comment, $args, $depth ) {
+if ( ! function_exists( 'dpt_comment' ) ) :
+function dpt_comment( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
 	switch ( $comment->comment_type ) :
 		case 'pingback' :
