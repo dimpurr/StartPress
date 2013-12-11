@@ -1,19 +1,21 @@
-<?php get_header(); ?>
+<?php // 获取头部
+	get_header(); ?>
 
 <?php if ( have_posts() ) : ?>
 
 	<?php while ( have_posts() ) : the_post(); ?>
-
-<?php get_template_part('content'); ?>
-
+		<?php // 获取文章展示模版 content.php
+			get_template_part('content'); ?>
 	<?php endwhile; ?>
 
-<?php dp_pagenavi(); ?>
+	<?php // 输出页码
+		dpt_pagenavi(); ?>
 
 <?php else : ?>
 
-	404.
-
+	<h1>404</h1>
+	
 <?php endif; ?>
 
-<?php get_footer(); ?>
+<?php // 获取尾部
+	get_footer(); ?>

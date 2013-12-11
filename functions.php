@@ -1,25 +1,25 @@
 <?php
 
-// Setup Language
+// 定义语言
 
 add_action('after_setup_theme', 'my_theme_setup');
 function my_theme_setup() {
 	load_theme_textdomain('dpt', get_template_directory() . '/lang');
 }
 
-// Setup Navigation
+// 定义导航
 
 register_nav_menus(array(
 	'main' => __( 'Main Nav','dpt' ),
 ));
 
-// Setup Sidebar
+// 定义侧边栏
 
 if ( function_exists('register_sidebar') )
 	register_sidebar(array(
 		'name' => __( 'Sidebar', 'dpt' ),
 		'id' => 'dpt',
-		'description' => 'Right Sidebar',
+		'description' => 'Sidebar',
 		'class' => '',
 		'before_widget' => '',
 		'after_widget' => '',
@@ -28,29 +28,30 @@ if ( function_exists('register_sidebar') )
 	)
 );
 
-// Check Upload
+// 检查更新，需要一个·服务器存放 info.json 和主题安装包。请参见 func 目录
 
 require_once(TEMPLATEPATH . '/func/theme-update-checker.php'); 
 $wpdaxue_update_checker = new ThemeUpdateChecker(
-	'what',
-	'http://work.dimpurr.com/theme/what/update/info.json'
+	'StartPress',
+	'http://work.dimpurr.com/theme/startpress/update/info.json'
 );
 
-// Theme Count
+// 主题使用统计，如果需要。
 
 function dpt_count() {
 
-// Ajax Count Function
+// Ajax 统计函数
 
 function dpt_tjaj() { ?>
 	<script type="text/javascript">
 	jQuery(document).ready(function() {
-		jQuery.get("http://work.dimpurr.com/theme/theme_tj.php?theme_name=what&blog_url=<?=get_bloginfo('url')?>&t=" + Math.random());
+		// 修改地址为服务器的 theme_tj.php 页面。请参见 func 目录
+		jQuery.get("http://work.dimpurr.com/theme/theme_tj.php?theme_name=StartPress&blog_url=<?=get_bloginfo('url')?>&t=" + Math.random());
 	});
 	</script>
 <?php };
 
-// Count Condition
+// 统计筛选条件
 
 $dpt_fitj = get_option('dpt_fitj');
 $dpt_dayv = get_option('dpt_dayv');
@@ -72,7 +73,7 @@ if ($dpt_fitj == true) {
 
 };
 
-// Page Navigation
+// 页面导航
 
 function dp_pagenavi () {
 	global $wp_query, $wp_rewrite;
@@ -87,8 +88,8 @@ function dp_pagenavi () {
 		'type' => 'plain',
 		'end_size'=>'0',
 		'mid_size'=>'5',
-		'prev_text' => __('<<','dpt'),
-		'next_text' => __('>>','dpt')
+		'prev_text' => __('上一页','dpt'),
+		'next_text' => __('下一页','dpt')
 	);
 
 	if( $wp_rewrite->using_permalinks() )
@@ -100,7 +101,7 @@ function dp_pagenavi () {
 	echo paginate_links($pagination);
 }
 
-// Load Comment
+// 加载评论
 
 if ( ! function_exists( 'dp_comment' ) ) :
 function dp_comment( $comment, $args, $depth ) {
@@ -110,7 +111,7 @@ function dp_comment( $comment, $args, $depth ) {
 		case 'trackback' :
 	?>
 	<li <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
-		<p><?php echo 'Pingback:'; ?> <?php comment_author_link(); ?> <?php edit_comment_link( '编辑', '<span class="edit-link">', '</span>' ); ?></p>
+		<p><?php echo 'Pingback '; ?> <?php comment_author_link(); ?> <?php edit_comment_link( '编辑', '<span class="edit-link">', '</span>' ); ?></p>
 	<?php
 			break;
 		default :
@@ -124,30 +125,24 @@ function dp_comment( $comment, $args, $depth ) {
 					printf( '<div class="cmt_meta_head"><cite class="fn">%1$s',
 						get_comment_author_link() );
 					printf( '%1$s </cite>',
-						( $comment->user_id === $post->post_author ) ? '<span class="cmt_meta_auth"> ' . __('作者','clrs') . '</span>' : '' );
+						( $comment->user_id === $post->post_author ) ? '<span class="cmt_meta_auth"> ' . __('作者','dpt') . '</span>' : '' );
 					printf( '</div><span class="cmt_meta_time"><a href="%1$s"><time datetime="%2$s">%3$s</time></a></span>',
 						esc_url( get_comment_link( $comment->comment_ID ) ),
 						get_comment_time( 'c' ),
 						sprintf( '%1$s %2$s' , get_comment_date(), get_comment_time() )
 					);
-					$wbos = get_option('clrs_wbos');
-					if ($wbos == "yes" ) {
-						echo '<a href="javascript:void(0)" class="cmt_ua_a">';
-						clrs_wp_useragent();
-						echo '</a>';
-					};
 				?>
 			</header>
 
 			<?php if ( '0' == $comment->comment_approved ) : ?>
-				<p class="comment-awaiting-moderation"><?php _e('审核中','clrs'); ?></p>
+				<p class="comment-awaiting-moderation"><?php _e('审核中','dpt'); ?></p>
 			<?php endif; ?>
 
 			<section class="comment-content comment">
 				<?php comment_text(); ?>
-				<?php edit_comment_link( __('編輯','clrs'), '<span class="edit-link">', '</span>' ); ?>
+				<?php edit_comment_link( __('編輯','dpt'), '<span class="edit-link">', '</span>' ); ?>
 				<?php delete_comment_link(get_comment_ID()); ?>
-				<?php comment_reply_link( array_merge( $args, array( 'reply_text' => __('回复','clrs'), 'after' => '', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+				<?php comment_reply_link( array_merge( $args, array( 'reply_text' => __('回复','dpt'), 'after' => '', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
 			</section>
 
 		</article>
@@ -157,12 +152,12 @@ function dp_comment( $comment, $args, $depth ) {
 }
 endif;
 
-// Admin Option
+// 后台设置页面
 
 function dpt_menu_func(){   
 	add_theme_page(
-		__('What?!','dpt'),
-		__('What?!','dpt'),
+		__('设置','dpt'),
+		__('设置','dpt'),
 		'administrator',
 		'dpt_menu',
 		'dpt_config');
@@ -172,6 +167,48 @@ add_action('admin_menu', 'dpt_menu_func');
 
 function dpt_config(){ dpt_thtj(); ?>
 
+<form method="post" name="dpt_form" id="dpt_form">
+
+<h1><?php _e('主题设置'); ?></h1>
+
+<input type="text" size="80" name="dpt_example" id="dpt_example" placeholder="<?php _e('示例控件','dpt'); ?>" value="<?php echo get_option('dpt_example'); ?>"/>
+<input type="button" name="upload_button" value="<?php _e('上传','dpt'); ?>" id="upbottom"/><br>
+
+<input type="submit" name="option_save" value="<?php _e('保存设置','dpt'); ?>" />
+
+<?php wp_enqueue_script('thickbox'); wp_enqueue_style('thickbox'); ?>
+	<script type="text/javascript">
+	// 导入 WordPress 媒体上传组件
+jQuery(document).ready(function() {
+	// 选择按钮
+	jQuery('#upbottom').click(function() {
+		// 选择目标文本框
+		targetfield = jQuery(this).prev('#dpt_example');
+		tb_show('', 'media-upload.php?type=image&amp;TB_iframe=true');
+		return false;
+	});
+	window.send_to_editor = function(html) {
+		imgurl = jQuery('img',html).attr('src');
+		jQuery(targetfield).val(imgurl);
+		tb_remove();
+	}	
+});
+	</script>
+
+<?php wp_nonce_field('update-options'); ?>
+<input type="hidden" name="action" value="update" />
+<input type="hidden" name="page_options" value="dpt_copy_right" />
+
+</form>
+
 <?php }
+
+// 提交设置
+
+if(isset($_POST['option_save'])){
+
+	$dpt_example = stripslashes($_POST['dpt_example']);
+	update_option( 'dpt_example', $dpt_example );
+}
 
 ?>

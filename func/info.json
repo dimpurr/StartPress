@@ -1,0 +1,8 @@
+{
+	// 填写当前服务器最新版本
+	"version" : "0.0.1",
+	// 更新信息，可选
+	"details_url" : "http://work.dimpurr.com/theme/startpress/update/details.txt",
+	// 填写最新版本安装包地址
+	"download_url" : "http://work.dimpurr.com/theme/clearision/update/clearision.zip"
+}

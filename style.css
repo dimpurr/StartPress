@@ -1,32 +1,39 @@
 /*
 Theme Name: StartPress
 Theme URI: http://dimpurr.com/
-Version: 0.0.1
+Version: 0.1
 Author: Dimpurr
 Author URI: http://dimpurr.com
 Description: Start a WordPress theme here.
 Text Domain: startpress
 */
+/* 定义 WordPress 主题信息 */
+
+/* Reset */
+/* 一些通用的清除和 HTML5 定义，如果需要。注意 @import 可能导致一定的效率问题*/
 
 @import url('src/reset.css');
 
 /* Common */
-
-.clearfix {
-	clear: both;
-}
+/* 在这里格式化标签和定义通用类。 */
 
 h1, h2, h3, h4, h5, h6, p, q, blockquote, li, a {
 	font-family: "Hiragino Sans GB W3", "AR PL UMing CN", "AR PL UMing HK", "AR PL UMing TW", "AR PL UMing TW MBE", "PMingLiU", "MingLiU", "Hiragino Sans GB", "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Micro Hei Mono", "WenQuanYi Zen Hei", "WenQuanYi Zen Hei", "Apple LiGothic Medium", "SimHei", "ST Heiti", "WenQuanYi Zen Hei Sharp", Sans;
 	color: #454647;
 }
 
+/* 对于文章内图片的宽度自适应。请将 article 改为文章内容容器，范围越小越不容易导致误伤。 */
 article img , article .wp-caption {
 	max-width: 100% !important;
 	width: 100% !important;
 }
 
+.clearfix {
+	clear: both;
+}
+
 /* Main */
+/* 开始主体样式。推荐将布局和样式分离。 */
 
 #page {
 	width: 600px;
@@ -34,6 +41,7 @@ article img , article .wp-caption {
 }
 
 /* Mobile */
+/* 移动版响应式部分。 */
 
 @media screen and (max-width: 600px) {
 
