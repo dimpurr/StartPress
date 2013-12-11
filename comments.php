@@ -5,7 +5,7 @@
 	<?php if ( have_comments() ) : ?>
 
 		<ol class="cmt_list">
-			<?php wp_list_comments( array( 'callback' => 'tt_comment', 'style' => 'ol' ) ); ?>
+			<?php wp_list_comments( array( 'callback' => 'dpt_comment', 'style' => 'ol' ) ); ?>
 		</ol>
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
