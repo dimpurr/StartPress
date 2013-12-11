@@ -1,0 +1,44 @@
+/*
+Theme Name: StartPress
+Theme URI: http://dimpurr.com/
+Version: 0.0.1
+Author: Dimpurr
+Author URI: http://dimpurr.com
+Description: Start a WordPress theme here.
+Text Domain: startpress
+*/
+
+@import url('src/reset.css');
+
+/* Common */
+
+.clearfix {
+	clear: both;
+}
+
+h1, h2, h3, h4, h5, h6, p, q, blockquote, li, a {
+	font-family: "Hiragino Sans GB W3", "AR PL UMing CN", "AR PL UMing HK", "AR PL UMing TW", "AR PL UMing TW MBE", "PMingLiU", "MingLiU", "Hiragino Sans GB", "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Micro Hei Mono", "WenQuanYi Zen Hei", "WenQuanYi Zen Hei", "Apple LiGothic Medium", "SimHei", "ST Heiti", "WenQuanYi Zen Hei Sharp", Sans;
+	color: #454647;
+}
+
+article img , article .wp-caption {
+	max-width: 100% !important;
+	width: 100% !important;
+}
+
+/* Main */
+
+#page {
+	width: 600px;
+	margin: 0 auto;
+}
+
+/* Mobile */
+
+@media screen and (max-width: 600px) {
+
+#page {
+	width: 100%;
+}
+
+}
