@@ -11,7 +11,7 @@ $ttj_name = ""; // 验证名
 $ttj_pass = ""; // 密码
 
 // 链接数据库
-$con = mysql_connect($sql_host,$sql_user,$sql_pass);
+$con = mysql_connect($sql_host,$sql_user,$sql_pass) or die('Cannot connect to database!');
 
 if ( !mysql_select_db($sql_name, $con) ) {
 
@@ -24,22 +24,26 @@ $sql = "CREATE TABLE" . $sql_name . "(
 )";
 mysql_query($sql,$con);
 
-} else if (!empty($_GET[blog_url])) {
+} else if (!empty($_GET['blog_url'])) {
 
 // 插入值
 
+$blog_url = mysql_real_escape_string($_GET['blog_url']);
+$theme_name = mysql_real_escape_string($_GET['theme_name']);
+
 $sql = "INSERT INTO theme_tj (blog_url, theme_name)
 VALUES
-('$_GET[blog_url]','$_GET[theme_name]')";
+('{$blog_url}','{$theme_name}')";
 mysql_query($sql,$con);
 
-} else {
-
-// 列出值
-$result = mysql_query("SELECT * FROM theme_tj");
-if ( $_GET[$ttj_name]) == $ttj_pass ) { 
+} elseif ( $_GET[$ttj_name]) == $ttj_pass ) {
+	// 列出值
+	$result = mysql_query("SELECT * FROM theme_tj");
 	while($row = mysql_fetch_array($result)) {
-  		echo $row['theme_name'] . ' <a href="' . $row['blog_url'] . '">' . $row['blog_url'] . '</a> ' . $row['set_date'];
+  		echo htmlentities($row['theme_name']) .
+  		' <a href="' . htmlentities($row['blog_url']) .
+  		'">' . htmlentities($row['blog_url']) .
+  		'</a> ' . htmlentities($row['set_date']);
   		echo "<br />";
 	};
 };
