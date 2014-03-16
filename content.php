@@ -11,6 +11,6 @@
 	</header>
 </hgroup>
 
-<div><?php the_content('继续阅读','dpt'); ?></div>
+<div><?php the_content(__('继续阅读','dpt')); ?></div>
 
 </article>

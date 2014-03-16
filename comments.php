@@ -4,7 +4,7 @@
 
 	<?php if ( have_comments() ) : ?>
 
-		<ol class="cmt_list">
+		<ol id="comments" class="cmt_list">
 			<?php wp_list_comments( array( 'callback' => 'dpt_comment', 'style' => 'ol' ) ); ?>
 		</ol>
 

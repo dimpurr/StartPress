@@ -40,6 +40,18 @@ article img , article .wp-caption {
 	margin: 0 auto;
 }
 
+/* 不要感谢我——对于自适应主题下日历小工具布局的救命稻草 */
+
+#wp-calendar td {
+	width: 1%; height: 20px;
+}
+
+#wp-calendar caption {
+	font-weight: bold;
+	margin-bottom: 5px;
+	margin-left: -5px;
+}
+
 /* Mobile */
 /* 移动版响应式部分。 */
 
