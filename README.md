@@ -15,3 +15,8 @@
 * 请将 `,'dpt'` 使用编辑器查找替换为 `,'主题的文本域'` ，当然也可以直接使用 dpt
 * 若需使用检查更新，请将 `func/info.json` 上传到服务器，并填写正确的版本号、安装包地址，更新时只需更新 `info.json `和安装包
 * 若需使用使用统计，请将 `func/theme_tj.php` 上传到服务器并设置数据库和密码
+
+### 授权
+* 使用 GNU General Public License(GPL) 继承自 WordPress
+* 自由分发，不强制署名
+* 如果愿意，可以在衍生主题的页脚或发布页注明 'Based on <a href="https://github.com/dimpurr/StartPress">StartPress</a>'
