@@ -123,6 +123,14 @@ function dpt_pagenavi () {
 	echo paginate_links($pagination);
 }
 
+// 评论附加函数
+
+function delete_comment_link( $id ) {
+	if (current_user_can('level_5')) {
+		echo '<a class="comment-edit-link" href="'.admin_url("comment.php?action=cdc&c=$id").'">' . __('删除','dpt') . '</a> ';
+	}
+}
+
 // 加载评论
 
 if ( ! function_exists( 'dpt_comment' ) ) :
